@@ -18,7 +18,8 @@
             size: { },
             slotType: {
                 default: 'normal'
-            }
+						},
+						targets: {}
         },
 
         computed: {
@@ -67,7 +68,20 @@
             },
 
             defineSlot(){
-                googletag.defineSlot(this.adUnit, this.sizes, this.id).defineSizeMapping(this.mapping).addService(googletag.pubads());
+							let slot = googletag
+								.defineSlot(this.adUnit, this.sizes, this.id)
+
+							slot.defineSizeMapping(this.mapping)
+								.addService(googletag.pubads())
+
+							if (this.targets) {
+								for (const key in this.targets) {
+									if (this.targets.hasOwnProperty(key)) {
+										console.log([key, this.targets[key]])
+										slot.setTargeting(key, this.targets[key])
+									}
+								}
+							}
             },
 
             defineOutOfPageSlot(){
@@ -86,4 +100,9 @@
         }
     }
 </script>
-
+<style scoped>
+::v-deep iframe {
+	display: block;
+	margin: 0 auto;
+}
+</style>

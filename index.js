@@ -26,10 +26,9 @@ export default {
         let gads = document.createElement('script');
         gads.async = true;
         gads.type = 'text/javascript';
-				let useSSL = 'https:' == document.location.protocol;
-				gads.src =
-				(useSSL ? "https:" : "http:") +
-				"//securepubads.g.doubleclick.net/tag/js/gpt.js";
+        let useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+            '//www.googletagservices.com/tag/js/gpt.js';
         let node = document.getElementsByTagName('script')[0];
         node.parentNode.insertBefore(gads, node);
 
