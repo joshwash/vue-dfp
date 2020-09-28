@@ -37,7 +37,12 @@ export default {
 
             googletag.pubads().enableSingleRequest();
             //googletag.pubads().enableSyncRendering();
-            googletag.pubads().collapseEmptyDivs();
+						googletag.pubads().collapseEmptyDivs();
+						googletag.pubads().enableLazyLoad({
+							fetchMarginPercent: 500, // Fetch slots within 5 viewports.
+							renderMarginPercent: 200, // Render slots within 2 viewports.
+							mobileScaling: 2.0 // Double the above values on mobile.
+						});
             // googletag.pubads().disableInitialLoad();
             googletag.enableServices();
             //googletag.display('dynamicload');
